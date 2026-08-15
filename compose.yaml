@@ -1,0 +1,23 @@
+services:
+  goldenops:
+    build: .
+    container_name: goldenops-compose
+    ports:
+      - "8000:8000"
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-compose
+    ports:
+      - "8080:80"
+
+  log-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile.generator
+    container_name: goldenops-log-generator
+    volumes:
+      - goldenops-logs:/logs
+
+volumes:
+  goldenops-logs:
