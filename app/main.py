@@ -55,7 +55,7 @@ async def observability_middleware(request: Request, call_next):
         logger.info(
             "http_request",
             extra={
-                "event": "http_request",
+                "event_name": "http_request",
                 "request_id": request_id,
                 "method": request.method,
                 "path": path,
@@ -75,7 +75,7 @@ def users():
     logger.info(
         "users_request",
         extra={
-            "event": "users_request",
+            "event_name": "users_request",
             "service": "goldenops",
         },
     )
@@ -87,7 +87,7 @@ def orders():
     logger.info(
         "orders_request",
         extra={
-            "event": "orders_request",
+            "event_name": "orders_request",
             "service": "goldenops",
         },
     )
@@ -108,7 +108,7 @@ def payments(
         logger.error(
             "payment_timeout",
             extra={
-                "event": "payment_timeout",
+                "event_name": "payment_timeout",
                 "service": "goldenops",
                 "request_id": request_id,
                 "error_type": "DatabaseTimeout",
@@ -123,7 +123,7 @@ def payments(
         logger.error(
             "payment_failure",
             extra={
-                "event": "payment_failure",
+                "event_name": "payment_failure",
                 "service": "goldenops",
                 "request_id": request_id,
                 "error_type": "PaymentProcessingError",
@@ -137,7 +137,7 @@ def payments(
     logger.info(
         "payment_success",
         extra={
-            "event": "payment_success",
+            "event_name": "payment_success",
             "service": "goldenops",
             "request_id": request_id,
         },
@@ -155,7 +155,7 @@ def random_failure():
         logger.error(
             "random_failure",
             extra={
-                "event": "random_failure",
+                "event_name": "random_failure",
                 "service": "goldenops",
                 "error_type": "DependencyUnavailable",
             },
@@ -184,7 +184,7 @@ async def unhandled_exception_handler(
     logger.exception(
         "unhandled_exception",
         extra={
-            "event": "unhandled_exception",
+            "event_name": "unhandled_exception",
             "service": "goldenops",
             "path": request.url.path,
             "error_type": type(exc).__name__,

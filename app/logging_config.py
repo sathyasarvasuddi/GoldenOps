@@ -10,13 +10,13 @@ class JsonFormatter(logging.Formatter):
         payload = {
             "@timestamp": datetime.now(timezone.utc).isoformat(),
             "level": record.levelname,
-            "service": os.getenv("SERVICE_NAME", "goldenops"),
+            "service_name": os.getenv("SERVICE_NAME", "goldenops"),
             "environment": os.getenv("ENVIRONMENT", "dev"),
             "message": record.getMessage(),
         }
 
         fields = (
-            "event",
+            "event_name",
             "request_id",
             "method",
             "path",
