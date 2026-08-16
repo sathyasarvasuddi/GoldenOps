@@ -4,6 +4,8 @@ services:
     container_name: goldenops-compose
     ports:
       - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
 
   nginx:
     image: nginx:alpine
@@ -17,7 +19,4 @@ services:
       dockerfile: Dockerfile.generator
     container_name: goldenops-log-generator
     volumes:
-      - goldenops-logs:/logs
-
-volumes:
-  goldenops-logs:
+      - ./logs:/logs

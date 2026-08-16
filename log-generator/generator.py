@@ -23,7 +23,15 @@ ENDPOINTS = [
     ("POST", "/api/login"),
 ]
 
-STATUS_CODES = [200, 200, 200, 200, 201, 400, 401, 404, 500, 502]
+STATUS_CODES = [
+    200, 200, 200, 200,
+    201,
+    400,
+    401,
+    404,
+    500,
+    502,
+]
 
 ERRORS = [
     "PaymentGatewayTimeout",
@@ -47,10 +55,10 @@ def generate_log():
 
     log = {
         "@timestamp": datetime.now(timezone.utc).isoformat(),
-        "service": random.choice(SERVICES),
+        "service_name": random.choice(SERVICES),
         "environment": "dev",
         "level": level,
-        "event": "http_request",
+        "event_name": "http_request",
         "method": method,
         "path": path,
         "status": status,
