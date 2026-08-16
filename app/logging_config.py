@@ -44,7 +44,7 @@ def configure_logging():
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
 
-    file_handler = logging.FileHandler("goldenops.log")
+    file_handler = logging.FileHandler("/app/logs/goldenops.log")
     file_handler.setFormatter(formatter)
 
     root = logging.getLogger()
