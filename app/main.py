@@ -76,7 +76,7 @@ def users():
         "users_request",
         extra={
             "event_name": "users_request",
-            "service": "goldenops",
+            "service_name": "goldenops",
         },
     )
     return {"users": [{"id": 1, "name": "demo-user"}]}
@@ -88,7 +88,7 @@ def orders():
         "orders_request",
         extra={
             "event_name": "orders_request",
-            "service": "goldenops",
+            "service_name": "goldenops",
         },
     )
     return {"orders": [{"id": "ORD-1001", "status": "COMPLETED"}]}
@@ -109,7 +109,7 @@ def payments(
             "payment_timeout",
             extra={
                 "event_name": "payment_timeout",
-                "service": "goldenops",
+                "service_name": "goldenops",
                 "request_id": request_id,
                 "error_type": "DatabaseTimeout",
             },
@@ -124,7 +124,7 @@ def payments(
             "payment_failure",
             extra={
                 "event_name": "payment_failure",
-                "service": "goldenops",
+                "service_name": "goldenops",
                 "request_id": request_id,
                 "error_type": "PaymentProcessingError",
             },
@@ -138,7 +138,7 @@ def payments(
         "payment_success",
         extra={
             "event_name": "payment_success",
-            "service": "goldenops",
+            "service_name": "goldenops",
             "request_id": request_id,
         },
     )
@@ -156,7 +156,7 @@ def random_failure():
             "random_failure",
             extra={
                 "event_name": "random_failure",
-                "service": "goldenops",
+                "service_name": "goldenops",
                 "error_type": "DependencyUnavailable",
             },
         )
@@ -185,7 +185,7 @@ async def unhandled_exception_handler(
         "unhandled_exception",
         extra={
             "event_name": "unhandled_exception",
-            "service": "goldenops",
+            "service_name": "goldenops",
             "path": request.url.path,
             "error_type": type(exc).__name__,
         },
